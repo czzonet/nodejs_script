@@ -1,0 +1,11 @@
+{
+  "name": "nodejs_script",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:czzonet/nodejs_script.git",
+  "author": "czz <czzonet@163.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^13.7.6"
+  }
+}

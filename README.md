@@ -1,2 +1,5 @@
 # nodejs_script
-node脚本调用unix系统，执行sh
+
+node 脚本调用 unix 系统，执行 sh
+
+## 方式
