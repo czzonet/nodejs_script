@@ -1,12 +1,25 @@
-# nodejs_script
+# Nodejs Script
 
-node 脚本调用 unix 系统，执行 sh
+![version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![building](https://img.shields.io/badge/building-pass-green.svg)
+
+使用Node子进程执行脚本命令。
 
 ## 方式
 
-使用`node API`里的`exec`,`execFile`即可。前者执行 shell 命令，后者只能执行文件。这里是希望调用自定义脚本，所以后者更方便些。
+使用`node API`里的`exec`,`execFile`。前者执行 shell 命令，后者只能执行文件。这里是希望调用自定义脚本，所以后者更方便些。
 
-注意`exec`,`execFile`是回调形式函数，可以手动转异步，或着使用转化库`promisify`。
+*`exec`,`execFile`是回调形式函数，可以手动转异步，或着使用转化库`promisify`。*
+
+## 测试
+
+```sh
+node ./dist/index.js
+```
+
+输出
+
+![pic](Snipaste_2020-07-19_22-25-10.png)
 
 ## 实现
 
@@ -64,8 +77,8 @@ const readUpdateOutputPromisify = async () =>
 
 ```
 
-
 ## References
 
 1. [Node.js 执行系统命令 - 掘金](https://juejin.im/post/5b07eb1c5188254e28710d80)
 2. [child_process | Node.js API 文档](http://nodejs.cn/api/child_process.html#child_process_child_process_execfile_file_args_options_callback)
+3. [node的process以及child_process - 掘金](https://juejin.im/post/5a996a87f265da239d48bebc)
