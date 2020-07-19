@@ -29,6 +29,42 @@ runFilePormisify()
   .catch(e => console.log("[E]", e));
 ```
 
+读取类似ping不断输出的命令，需要监听事件
+
+```ts
+/**
+ * 版本4：读取类似ping不断输出的命令
+ */
+const readUpdateOutputPromisify = async () =>
+  new Promise((resolve, reject) => {
+    const ping = spawn("ping", ["127.0.0.1", "-c", "4"], {
+      stdio: ["pipe", "pipe", "pipe"],
+      cwd: __dirname,
+      env: process.env,
+      detached: true,
+    });
+
+    /** 监听输出 */
+    ping.stdout.on("data", (data) => {
+      /** data是buffer */
+      console.log(`stdout: ${data.toString()}`);
+    });
+
+    /** 错误处理 */
+    ping.stderr.on("data", (data) => {
+      console.error(`stderr: ${data}`);
+    });
+
+    /** 结束处理 */
+    ping.on("close", (code) => {
+      console.log(`子进程退出，退出码 ${code}`);
+      resolve();
+    });
+  });
+
+```
+
+
 ## References
 
 1. [Node.js 执行系统命令 - 掘金](https://juejin.im/post/5b07eb1c5188254e28710d80)
